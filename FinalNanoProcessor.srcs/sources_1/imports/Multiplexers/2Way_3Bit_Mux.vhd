@@ -17,10 +17,8 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,20 +29,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity twoWay_3Bit_Mux is
-    Port ( AdderIn : in STD_LOGIC_VECTOR (2 downto 0);
-           JumpAdd : in STD_LOGIC_VECTOR (2 downto 0);
-           Jump : in STD_LOGIC;
-           PC_in : out STD_LOGIC_VECTOR (2 downto 0));
-end twoWay_3Bit_Mux;
+ENTITY twoWay_3Bit_Mux IS
+    PORT (
+        AdderIn : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+        JumpAdd : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+        Jump : IN STD_LOGIC;
+        PC_in : OUT STD_LOGIC_VECTOR (2 DOWNTO 0));
+END twoWay_3Bit_Mux;
 
-architecture Behavioral of twoWay_3Bit_Mux is
+ARCHITECTURE Behavioral OF twoWay_3Bit_Mux IS
 
-SIGNAL Y : STD_LOGIC_VECTOR (2 DOWNTO 0);
+    SIGNAL Y : STD_LOGIC_VECTOR (2 DOWNTO 0);
 
-begin
-    
-    PROCESS(Jump, AdderIn, JumpAdd)
+BEGIN
+
+    PROCESS (Jump, AdderIn, JumpAdd)
     BEGIN
         CASE Jump IS
             WHEN '0' =>
@@ -56,4 +55,4 @@ begin
         END CASE;
     END PROCESS;
 
-end Behavioral;
+END Behavioral;

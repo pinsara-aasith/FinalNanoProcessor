@@ -17,10 +17,8 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,32 +29,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Slow_Clk is
-Port (
-    Clk_in : in STD_LOGIC;
-    Clk_out : out STD_LOGIC
-);
-end Slow_Clk;
+ENTITY Slow_Clk IS
+    PORT (
+        Clk_in : IN STD_LOGIC;
+        Clk_out : OUT STD_LOGIC
+    );
+END Slow_Clk;
 
-architecture Behavioral of Slow_Clk is
+ARCHITECTURE Behavioral OF Slow_Clk IS
 
-signal count : integer := 1;
-signal Clk_status : std_logic := '0';
+    SIGNAL count : INTEGER := 1;
+    SIGNAL Clk_status : STD_LOGIC := '0';
 
-begin
+BEGIN
 
-process(Clk_in) begin
-    if (rising_edge(Clk_in)) then 
-        count <= count + 1;
-        if (count = 2) then
-            Clk_status <= not Clk_status;
-            Clk_out <= Clk_status;
-            count <= 1;
-        end if;
-    end if;
-end process; 
+    PROCESS (Clk_in) BEGIN
+        IF (rising_edge(Clk_in)) THEN
+            count <= count + 1;
+            IF (count = 2) THEN
+                Clk_status <= NOT Clk_status;
+                Clk_out <= Clk_status;
+                count <= 1;
+            END IF;
+        END IF;
+    END PROCESS;
 
-end Behavioral;
-
-
-
+END Behavioral;

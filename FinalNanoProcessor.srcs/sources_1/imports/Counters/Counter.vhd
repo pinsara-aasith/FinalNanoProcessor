@@ -17,10 +17,8 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,73 +29,73 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Counter is
+ENTITY Counter IS
 
-Port ( 
-    Dir : in STD_LOGIC;
-    Res : in STD_LOGIC;
-    Clk : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR (2 downto 0)
-);
- 
-end Counter;
+    PORT (
+        Dir : IN STD_LOGIC;
+        Res : IN STD_LOGIC;
+        Clk : IN STD_LOGIC;
+        Q : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+    );
 
-architecture Behavioral of Counter is
-component D_FF 
-port ( 
-    D : in STD_LOGIC; 
-    Res: in STD_LOGIC; 
-    Clk : in STD_LOGIC; 
-    Q : out STD_LOGIC; 
-    Qbar : out STD_LOGIC
-); 
-end component; 
+END Counter;
 
-component Slow_Clk 
-port ( 
-    Clk_in : in STD_LOGIC; 
-    Clk_out: out STD_LOGIC
-); 
-end component; 
+ARCHITECTURE Behavioral OF Counter IS
+    COMPONENT D_FF
+        PORT (
+            D : IN STD_LOGIC;
+            Res : IN STD_LOGIC;
+            Clk : IN STD_LOGIC;
+            Q : OUT STD_LOGIC;
+            Qbar : OUT STD_LOGIC
+        );
+    END COMPONENT;
 
-signal D0, D1, D2 : std_logic; 
-signal Q0, Q1, Q2 : std_logic; 
-signal Clk_slow : std_logic;
+    COMPONENT Slow_Clk
+        PORT (
+            Clk_in : IN STD_LOGIC;
+            Clk_out : OUT STD_LOGIC
+        );
+    END COMPONENT;
 
-begin
+    SIGNAL D0, D1, D2 : STD_LOGIC;
+    SIGNAL Q0, Q1, Q2 : STD_LOGIC;
+    SIGNAL Clk_slow : STD_LOGIC;
 
-Slow_Clk0 : Slow_Clk 
-port map ( 
-    Clk_in => Clk, 
-    Clk_out => Clk_slow); 
-    D0 <= ((not Q2) and (not Dir)) or (Q1 and Dir); 
-    D1 <= ((not Dir) and Q0) or (Dir and Q2); 
-    D2 <= ((not Dir) and Q1) or (Dir and (not Q0)
-);
+BEGIN
 
-D_FF0 : D_FF 
-port map ( 
-    D => D0, 
-    Res => Res, 
-    Clk => Clk_slow, 
-    Q => Q0);
+    Slow_Clk0 : Slow_Clk
+    PORT MAP(
+        Clk_in => Clk,
+        Clk_out => Clk_slow);
+    D0 <= ((NOT Q2) AND (NOT Dir)) OR (Q1 AND Dir);
+    D1 <= ((NOT Dir) AND Q0) OR (Dir AND Q2);
+    D2 <= ((NOT Dir) AND Q1) OR (Dir AND (NOT Q0)
+        );
 
-D_FF1 : D_FF 
-port map ( 
-    D => D1,
-    Res => Res,
-    Clk => Clk_slow,
-    Q => Q1); 
+    D_FF0 : D_FF
+    PORT MAP(
+        D => D0,
+        Res => Res,
+        Clk => Clk_slow,
+        Q => Q0);
 
-D_FF2 : D_FF 
-port map (
-    D => D2,
-    Res => Res,
-    Clk => Clk_slow,
-    Q => Q2);
+    D_FF1 : D_FF
+    PORT MAP(
+        D => D1,
+        Res => Res,
+        Clk => Clk_slow,
+        Q => Q1);
 
-Q(0) <= Q0; 
-Q(1) <= Q1;
-Q(2) <= Q2; 
+    D_FF2 : D_FF
+    PORT MAP(
+        D => D2,
+        Res => Res,
+        Clk => Clk_slow,
+        Q => Q2);
 
-end Behavioral;
+    Q(0) <= Q0;
+    Q(1) <= Q1;
+    Q(2) <= Q2;
+
+END Behavioral;

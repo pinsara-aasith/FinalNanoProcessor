@@ -17,10 +17,8 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,33 +29,33 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity D_FF is
-    Port ( 
-        D : in STD_LOGIC;
-        Res : in STD_LOGIC;
-        Clk : in STD_LOGIC;
-        Q : out STD_LOGIC;
-        Qbar : out STD_LOGIC
+ENTITY D_FF IS
+    PORT (
+        D : IN STD_LOGIC;
+        Res : IN STD_LOGIC;
+        Clk : IN STD_LOGIC;
+        Q : OUT STD_LOGIC;
+        Qbar : OUT STD_LOGIC
     );
-end D_FF;
+END D_FF;
 
-architecture Behavioral of D_FF is
+ARCHITECTURE Behavioral OF D_FF IS
 
-begin
+BEGIN
 
-process (Clk) 
-begin
+    PROCESS (Clk)
+    BEGIN
 
-if (rising_edge(Clk)) then
-    if Res = '1' then
-        Q <= '0';
-        Qbar <= '1';
-    else
-        Q <= D;
-        Qbar <= not D;
-    end if;
-end if;
+        IF (rising_edge(Clk)) THEN
+            IF Res = '1' THEN
+                Q <= '0';
+                Qbar <= '1';
+            ELSE
+                Q <= D;
+                Qbar <= NOT D;
+            END IF;
+        END IF;
 
-end process;
+    END PROCESS;
 
-end Behavioral;
+END Behavioral;
