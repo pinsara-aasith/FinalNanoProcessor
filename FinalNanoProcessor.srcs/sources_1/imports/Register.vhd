@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 04/08/2023 08:01:34 PM
+-- Create Date: 07/21/2022 12:11:12 PM
 -- Design Name: 
--- Module Name: D_FF - Behavioral
+-- Module Name: Register - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -29,33 +29,27 @@ USE IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-ENTITY D_FF IS
+ENTITY Register_4 IS
     PORT (
-        D : IN STD_LOGIC;
-        Res : IN STD_LOGIC;
+        D : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        En : IN STD_LOGIC;
         Clk : IN STD_LOGIC;
-        Q : OUT STD_LOGIC;
-        Qbar : OUT STD_LOGIC
-    ); 
-END D_FF;
+        Res : IN STD_LOGIC;
+        Q : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
+END Register_4;
 
-ARCHITECTURE Behavioral OF D_FF IS
+ARCHITECTURE Behavioral OF Register_4 IS
 
 BEGIN
 
-    PROCESS (Clk)
-    BEGIN
-
-        IF (rising_edge(Clk)) THEN
-            IF Res = '1' THEN
-                Q <= '0';
-                Qbar <= '1';
-            ELSE
+    PROCESS (Clk, Res) BEGIN
+        IF (Res = '1') THEN
+            Q <= '0000';
+        ELSIF (rising_edge(Clk)) THEN
+            IF (En = '1') THEN
                 Q <= D;
-                Qbar <= NOT D;
             END IF;
         END IF;
-
     END PROCESS;
 
 END Behavioral;

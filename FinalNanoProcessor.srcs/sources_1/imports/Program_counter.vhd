@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 04/08/2023 08:01:34 PM
+-- Create Date: 07/21/2022 12:15:57 PM
 -- Design Name: 
--- Module Name: D_FF - Behavioral
+-- Module Name: Program_counter - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -29,33 +29,26 @@ USE IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-ENTITY D_FF IS
+ENTITY Program_counter IS
     PORT (
-        D : IN STD_LOGIC;
-        Res : IN STD_LOGIC;
+        D : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         Clk : IN STD_LOGIC;
-        Q : OUT STD_LOGIC;
-        Qbar : OUT STD_LOGIC
-    ); 
-END D_FF;
+        Res : IN STD_LOGIC; -- SIGNAL TO RESET
+        Load : IN STD_LOGIC; -- SIGNAL TO LOAD 
+        Q : OUT STD_LOGIC_VECTOR (2 DOWNTO 0));
+END Program_counter;
 
-ARCHITECTURE Behavioral OF D_FF IS
+ARCHITECTURE Behavioral OF Program_counter IS
 
 BEGIN
-
-    PROCESS (Clk)
-    BEGIN
-
+    PROCESS (Clk) BEGIN
         IF (rising_edge(Clk)) THEN
-            IF Res = '1' THEN
-                Q <= '0';
-                Qbar <= '1';
-            ELSE
+            IF (Res = '1') THEN
+                Q <= "000";
+            ELSIF (Load = '1') THEN
                 Q <= D;
-                Qbar <= NOT D;
             END IF;
         END IF;
-
     END PROCESS;
 
 END Behavioral;
