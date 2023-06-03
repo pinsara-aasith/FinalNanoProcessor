@@ -1,12 +1,7 @@
-----------------------------------------------------------------------------------
 LIBRARY IEEE;
+
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 ENTITY ROM IS
     PORT (
