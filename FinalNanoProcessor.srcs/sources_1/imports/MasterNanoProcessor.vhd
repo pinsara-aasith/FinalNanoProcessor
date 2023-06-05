@@ -1,8 +1,7 @@
 LIBRARY IEEE;
-
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY MasterNanoProcessor IS
+ENTITY MasterNano_processor IS
     PORT (
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
@@ -14,11 +13,11 @@ ENTITY MasterNanoProcessor IS
         Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
     );
 
-END MasterNanoProcessor;
+END MasterNano_processor;
 
-ARCHITECTURE Behavioral OF MasterNanoProcessor IS
+ARCHITECTURE Behavioral OF MasterNano_processor IS
 
-    COMPONENT NanoProcessor
+    COMPONENT Nano_processor
         PORT (
             Clk : IN STD_LOGIC;
             Res : IN STD_LOGIC;
@@ -26,13 +25,6 @@ ARCHITECTURE Behavioral OF MasterNanoProcessor IS
             Zero : OUT STD_LOGIC;
             Overflow : OUT STD_LOGIC;
             OUT_REG : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
-        );
-    END COMPONENT;
-
-    COMPONENT LUT_16_7
-        PORT (
-            address : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-            data : OUT STD_LOGIC_VECTOR (6 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -54,7 +46,7 @@ BEGIN
         Clk_out => slowClk
     );
 
-    NanoProcessor0 : NanoProcessor
+    Nano_processor0 : Nano_processor
     PORT MAP(
         Clk => slowClk,
         Res => Res,
@@ -64,13 +56,6 @@ BEGIN
         OUT_REG => address
     );
 
-    LUT_16_7_0 : LUT_16_7
-    PORT MAP(
-        address => address,
-        data => S_7Seg
-    );
-
-    -- to only switch on last 7 seg display
     Anode <= "1110";
     S_LED <= address;
 END Behavioral;

@@ -21,13 +21,14 @@ END Register_bank;
 
 ARCHITECTURE Behavioral OF Register_bank IS
 
-    COMPONENT Register
+    COMPONENT Register_4
         PORT (
             D : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             En : IN STD_LOGIC;
             Clk : IN STD_LOGIC;
             Res : IN STD_LOGIC;
-            Q : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
+            Q : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+            );
     END COMPONENT;
 
     COMPONENT Decoder_3_to_8

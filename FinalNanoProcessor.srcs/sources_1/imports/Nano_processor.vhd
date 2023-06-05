@@ -2,7 +2,7 @@ LIBRARY IEEE;
 
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY NanoProcessor IS
+ENTITY Nano_processor IS
     PORT (
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
@@ -11,11 +11,11 @@ ENTITY NanoProcessor IS
         Overflow : OUT STD_LOGIC;
         OUT_REG : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
-END NanoProcessor;
+END Nano_processor;
 
-ARCHITECTURE Behavioral OF NanoProcessor IS
+ARCHITECTURE Behavioral OF Nano_processor IS
 
-    COMPONENT Adder_3_Bit
+    COMPONENT Adder_3
         PORT (
             A : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             S : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
@@ -44,7 +44,7 @@ ARCHITECTURE Behavioral OF NanoProcessor IS
             Reg_En : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             Clk : IN STD_LOGIC;
-            RESET_Register_bank : IN STD_LOGIC;
+            Reset_Register_bank : IN STD_LOGIC;
             B0 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             B1 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             B2 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -150,7 +150,7 @@ ARCHITECTURE Behavioral OF NanoProcessor IS
 
 BEGIN
 
-    Adder3Bit0 : Adder_3_Bit
+    Adder3Bit0 : Adder_3
     PORT MAP(
         A => S0, -- INPUT FROM THE PC
         S => S1 -- INCREMENTED VALUE
@@ -207,7 +207,7 @@ BEGIN
         Reg_En => Reg_en0,
         A => A0,
         Clk => Clk,
-        RESET_Register_bank => Res,
+        Reset_Register_bank => Res,
         B0 => B00,
         B1 => B01,
         B2 => B02,

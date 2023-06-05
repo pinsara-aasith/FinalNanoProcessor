@@ -16,8 +16,8 @@ ENTITY Instruction_decoder IS
         JMP_SEL : IN STD_LOGIC
     );
     --     -- NEWLY ADDED CODE
-    --     ATTRIBUTE  use_dsp : string;
-    --     ATTRIBUTE  use_dsp of Instruction_decoder : entity is "yes";
+        -- ATTRIBUTE  use_dsp : string;
+        -- ATTRIBUTE  use_dsp of Instruction_decoder : entity is "yes";
 END Instruction_decoder;
 
 ARCHITECTURE Behavioral OF Instruction_decoder IS
