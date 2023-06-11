@@ -1,7 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY MasterNano_processor IS
+ENTITY Master_nano_processor IS
     PORT (
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
@@ -13,10 +13,9 @@ ENTITY MasterNano_processor IS
         Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
     );
 
-END MasterNano_processor;
+END Master_nano_processor;
 
-ARCHITECTURE Behavioral OF MasterNano_processor IS
-
+ARCHITECTURE Behavioral OF Master_nano_processor IS
     COMPONENT Nano_processor
         PORT (
             Clk : IN STD_LOGIC;

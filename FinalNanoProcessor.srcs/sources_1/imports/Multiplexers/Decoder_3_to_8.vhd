@@ -19,26 +19,26 @@ ARCHITECTURE Behavioral OF Decoder_3_to_8 IS
 
     SIGNAL I0, I1 : STD_LOGIC_VECTOR (1 DOWNTO 0);
     SIGNAL Y0, Y1 : STD_LOGIC_VECTOR (3 DOWNTO 0);
-    SIGNAL en0, en1, I2 : STD_LOGIC;
+    SIGNAL EN0, EN1, I2 : STD_LOGIC;
 
 BEGIN
 
     Decoder_2_to_4_0 : Decoder_2_to_4
     PORT MAP(
         I => I0,
-        EN => en0,
+        EN => EN0,
         Y => Y0
     );
 
     Decoder_2_to_4_1 : Decoder_2_to_4
     PORT MAP(
         I => I1,
-        EN => en1,
+        EN => EN1,
         Y => Y1
     );
 
-    en0 <= NOT(I(2)) AND EN;
-    en1 <= I(2) AND EN;
+    EN0 <= NOT(I(2)) AND EN;
+    EN1 <= I(2) AND EN;
 
     I0 <= I(1 DOWNTO 0);
     I1 <= I(1 DOWNTO 0);

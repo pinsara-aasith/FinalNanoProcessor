@@ -1,7 +1,7 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY MUX_8_Way_4_Bit IS
+ENTITY Mux_8_way_4_bit IS
     PORT (
         D0 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         D1 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -11,12 +11,12 @@ ENTITY MUX_8_Way_4_Bit IS
         D5 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         D6 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         D7 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-        Y_out : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+        Y : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         S : IN STD_LOGIC_VECTOR (2 DOWNTO 0)
     );
-END MUX_8_Way_4_Bit;
+END Mux_8_way_4_bit;
 
-ARCHITECTURE Behavioral OF MUX_8_Way_4_Bit IS
+ARCHITECTURE Behavioral OF Mux_8_way_4_bit IS
 
 BEGIN
 
@@ -24,23 +24,23 @@ BEGIN
     BEGIN
         CASE S IS
             WHEN "000" =>
-                Y_out <= D0;
+                Y <= D0;
             WHEN "001" =>
-                Y_out <= D1;
+                Y <= D1;
             WHEN "010" =>
-                Y_out <= D2;
+                Y <= D2;
             WHEN "011" =>
-                Y_out <= D3;
+                Y <= D3;
             WHEN "100" =>
-                Y_out <= D4;
+                Y <= D4;
             WHEN "101" =>
-                Y_out <= D5;
+                Y <= D5;
             WHEN "110" =>
-                Y_out <= D6;
+                Y <= D6;
             WHEN "111" =>
-                Y_out <= D7;
+                Y <= D7;
             WHEN OTHERS =>
-                Y_out <= (OTHERS => 'X');
+                Y <= (OTHERS => 'X');
         END CASE;
     END PROCESS;
 

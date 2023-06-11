@@ -16,7 +16,6 @@ ARCHITECTURE Behavioral OF ProgramRomAdd IS
         "100010000010", -- MOVI R1, 2 ; R1 ? 2                 format: 10 RRR 000 dddd
         "001110010000", -- ADD R7, R1 ; R7 ? R7 + R1           format: 00 RaRaRa RbRbRb 0000
         "001111110000", -- ADD R7, R7 ; R7 ? R7 + R7           format: 00 RaRaRa RbRbRb 0000
-        "100001000000" -- HALT SIGNAL ENABLING                 format: 10 000 100 0000
     );
 
 BEGIN

@@ -11,6 +11,7 @@ END ROM;
 
 ARCHITECTURE Behavioral OF ROM IS
     TYPE rom_type IS ARRAY (0 TO 6) OF STD_LOGIC_VECTOR(11 DOWNTO 0);
+
     SIGNAL rom : rom_type := (
         "100010001010", -- MOVI R1, 10 ; R1 ? 10                 format: 10 RRR 000 dddd
         "100100000001", -- MOVI R2, 1  ; R2 ? 1                  format: 10 RRR 000 dddd
@@ -19,9 +20,8 @@ ARCHITECTURE Behavioral OF ROM IS
         "110010000110", -- JZR R1, 7   ; If R1 = 0 jump to line 7 format: 11 RRR 0000 ddd
         "110000000011", -- JZR R0, 3   ; If R0 = 0 jump to line 3 format: 11 RRR 0000 ddd
         -- no line 7
-        "100001000000" -- HALT SIGNAL ENABLING                   format: 10 000 100 0000
-
     );
+
 BEGIN
     Instruction <= rom(to_integer(unsigned(Mem_address)));
 END Behavioral;

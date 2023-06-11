@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 03/28/2023 01:08:11 AM
 -- Design Name: 
--- Module Name: Mux_8_to_1 - Behavioral
+-- Module Name: Mux_8_way_1_bit - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -29,15 +29,15 @@ USE IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-ENTITY Mux_8_to_1 IS
+ENTITY Mux_8_way_1_bit IS
     PORT (
         S : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         D : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
         EN : IN STD_LOGIC;
         Y : OUT STD_LOGIC);
-END Mux_8_to_1;
+END Mux_8_way_1_bit;
 
-ARCHITECTURE Behavioral OF Mux_8_to_1 IS
+ARCHITECTURE Behavioral OF Mux_8_way_1_bit IS
 
     COMPONENT Decoder_3_to_8
         PORT (

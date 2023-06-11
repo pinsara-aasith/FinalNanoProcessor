@@ -5,80 +5,78 @@ ENTITY Instruction_decoder IS
     PORT (
         Instruction : IN STD_LOGIC_VECTOR (11 DOWNTO 0);
         Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+
         Load_sel : OUT STD_LOGIC;
-        Imd_val : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-        Reg_selA : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-        Reg_selB : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+
+        Imd_val : OUT STD_LOGIC_VECTOR (3 DOWNTO 0); --OK
+
+        Reg_select_A : OUT STD_LOGIC_VECTOR (2 DOWNTO 0); --OK
+        Reg_select_B : OUT STD_LOGIC_VECTOR (2 DOWNTO 0); --OK
+
         Add_sub_sel : OUT STD_LOGIC;
+
         Jump : OUT STD_LOGIC;
         Jump_address : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-        HALT : OUT STD_LOGIC;
-        JMP_SEL : IN STD_LOGIC
+        Zero_flag : IN STD_LOGIC
     );
-    --     -- NEWLY ADDED CODE
-        -- ATTRIBUTE  use_dsp : string;
-        -- ATTRIBUTE  use_dsp of Instruction_decoder : entity is "yes";
 END Instruction_decoder;
 
 ARCHITECTURE Behavioral OF Instruction_decoder IS
 
-    --    SIGNAL DEC_OUT : STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL OP_ADD, OP_NEG, OP_JZR, OP_MOV : STD_LOGIC;
+    SIGNAL Ins_ADD : STD_LOGIC;
+    SIGNAL Ins_NEG : STD_LOGIC;
+    SIGNAL Ins_JZR : STD_LOGIC;
+    SIGNAL Ins_MOV : STD_LOGIC;
 
 BEGIN
-
     PROCESS (Instruction(11 DOWNTO 10))
     BEGIN
-        OP_ADD <= '0';
-        OP_NEG <= '0';
-        OP_MOV <= '0';
-        OP_JZR <= '0';
+        Ins_MOV <= '0';
+        Ins_JZR <= '0';
+        Ins_ADD <= '0';
+        Ins_NEG <= '0';
+
         CASE Instruction(11 DOWNTO 10) IS
             WHEN "00" =>
-                OP_ADD <= '1';
+                Ins_ADD <= '1';
             WHEN "01" =>
-                OP_NEG <= '1';
+                Ins_NEG <= '1';
             WHEN "10" =>
-                OP_MOV <= '1';
+                Ins_MOV <= '1';
             WHEN OTHERS =>
-                OP_JZR <= '1';
+                Ins_JZR <= '1';
         END CASE;
     END PROCESS;
 
-    Reg_en <= Instruction(9 DOWNTO 7);
-    Imd_val <= Instruction(3 DOWNTO 0);
-    Load_sel <= OP_MOV;
-    Add_sub_sel <= OP_NEG;
-
-    -- REGISTER A, REGISTER B ADDRESS VALUES
-    PROCESS (Instruction(9 DOWNTO 4), OP_NEG)
+    PROCESS (Ins_MOV, Ins_ADD, Ins_NEG, Ins_JZR, Zero_flag)
     BEGIN
-        IF (OP_NEG = '0') THEN
-            Reg_selA <= Instruction(9 DOWNTO 7);
-            Reg_selB <= Instruction(6 DOWNTO 4);
-        ELSE
-            Reg_selA <= "000";
-            Reg_selB <= Instruction(9 DOWNTO 7);
-        END IF;
-    END PROCESS;
+        Jump <= '0';
 
-    PROCESS (JMP_SEL, OP_JZR)
-    BEGIN
-        IF OP_JZR = '1' THEN
-            Jump <= JMP_SEL;
-        ELSE
-            Jump <= '0';
-        END IF;
-    END PROCESS;
+        IF (Ins_ADD = '1') THEN
+            Reg_select_A <= Instruction(11 DOWNTO 9);
+            Reg_select_B <= Instruction(8 DOWNTO 6);
+            Add_sub_sel <= '1';
+            Load_sel <= '0';
+            Reg_en <= Instruction(11 DOWNTO 9);
 
-    Jump_address <= Instruction(2 DOWNTO 0);
+        ELSIF (Ins_NEG = '1') THEN
+            Reg_select_A <= "000"; -- ALWAYS 0
+            Reg_select_B <= Instruction(11 DOWNTO 9);
+            Reg_en <= Instruction(11 DOWNTO 9);
+            Add_sub_sel <= '1';
+            Load_sel <= '0';
 
-    PROCESS (OP_MOV, Instruction(6))
-    BEGIN
-        IF OP_MOV = '1' AND Instruction(6) = '1' THEN
-            HALT <= '1';
-        ELSE
-            HALT <= '0';
+        ELSIF (Ins_MOV = '1') THEN
+            Load_sel <= '1';
+            Imd_val <= Instruction(3 DOWNTO 0);
+            Reg_en <= Instruction(11 DOWNTO 10);
+
+        ELSIF (Ins_JZR = '1') THEN
+            Reg_select_A <= Instruction(11 DOWNTO 9); -- GET THE VALUE OF THE REGISTER RRR IN THE REGISTER A
+            IF (Zero_flag = '1') THEN
+                Jump_address <= Instruction(2 DOWNTO 0);
+                Jump <= '1';
+            END IF;
         END IF;
     END PROCESS;
 
