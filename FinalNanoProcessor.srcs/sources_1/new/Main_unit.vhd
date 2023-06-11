@@ -8,8 +8,8 @@ ENTITY Main_unit IS
         Zero : OUT STD_LOGIC;
         Overflow : OUT STD_LOGIC;
         S_7Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
-        Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
-        Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+        Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+        Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 
 END Main_unit;
