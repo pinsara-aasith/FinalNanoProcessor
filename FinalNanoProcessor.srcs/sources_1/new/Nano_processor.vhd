@@ -8,7 +8,7 @@ ENTITY Nano_processor IS
         Res : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
         Overflow : OUT STD_LOGIC;
-        OUT_REG : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+        Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END Nano_processor;
 
@@ -97,10 +97,10 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             Result : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             AddSub_Ctrl : IN STD_LOGIC;
             Zero_flag : OUT STD_LOGIC
-            );
-            -- Carry_flag : OUT STD_LOGIC;
-            -- Sign_flag : OUT STD_LOGIC;
-            -- Parity_flag : OUT STD_LOGIC
+        );
+        -- Carry_flag : OUT STD_LOGIC;
+        -- Sign_flag : OUT STD_LOGIC;
+        -- Parity_flag : OUT STD_LOGIC
     END COMPONENT;
 
     COMPONENT Mux_8_way_4_bit IS
@@ -121,10 +121,10 @@ ARCHITECTURE Behavioral OF Nano_processor IS
 
     -- INSTRUCTION DECODER
     SIGNAL Reg_en0, Reg_select_A0, Reg_select_B0, Jump_address0 : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL Load_sel0, Add_sub_sel0, JMP : STD_LOGIC;
+    SIGNAL Load_sel0, Add_sub_sel0, Jmp : STD_LOGIC;
     SIGNAL Imd_val0 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
-    SIGNAL ZERO_FLAG : STD_LOGIC;
+    SIGNAL Zero_flag : STD_LOGIC;
 
     -- PROGRAM ROM
     SIGNAL PR_OUT : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -143,15 +143,15 @@ ARCHITECTURE Behavioral OF Nano_processor IS
 BEGIN
     Adder_3_Bit : Adder_3
     PORT MAP(
-        A => S0, -- INPUT FROM THE PC
-        Result => S1 -- INCREMENTED VALUE
+        A => S0,
+        Result => S1
     );
 
     Jump_selector : Mux_2_way_3_bit
     PORT MAP(
         D0 => S1,
         D1 => Jump_address0,
-        S => JMP,
+        S => Jmp,
         Y => PC_Input
     );
 
@@ -188,8 +188,8 @@ BEGIN
         Reg_select_B => Reg_select_B0,
         Add_sub_sel => Add_sub_sel0,
         Jump_address => Jump_address0,
-        Jump => JMP,
-        Zero_flag => ZERO_FLAG
+        Jump => Jmp,
+        Zero_flag => Zero_flag
     );
 
     Reg_bank : Register_bank
@@ -214,7 +214,7 @@ BEGIN
         B => B,
         AddSub_Ctrl => Add_sub_sel0,
         Result => Adder_Out,
-        Zero_flag => ZERO_FLAG
+        Zero_flag => Zero_flag
     );
 
     Reg_A_selector : Mux_8_way_4_bit
@@ -245,8 +245,8 @@ BEGIN
         S => Reg_select_B0
     );
 
-    Zero <= ZERO_FLAG;
+    Zero <= Zero_flag;
 
     S2 <= S0;
-    OUT_REG <= RB7;
+    Value <= RB7;
 END Behavioral;

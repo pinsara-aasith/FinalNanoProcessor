@@ -2,13 +2,13 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY LUT_16_7 IS
+ENTITY LUT_16_7_Seg IS
     PORT (
-        address : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-        data : OUT STD_LOGIC_VECTOR (6 DOWNTO 0));
-END LUT_16_7;
+        Address : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+        Data : OUT STD_LOGIC_VECTOR (6 DOWNTO 0));
+END LUT_16_7_Seg;
 
-ARCHITECTURE Behavioral OF LUT_16_7 IS
+ARCHITECTURE Behavioral OF LUT_16_7_Seg IS
     TYPE rom_type IS ARRAY (0 TO 15) OF STD_LOGIC_VECTOR(6 DOWNTO 0);
 
     SIGNAL Seven_Segment_ROM : rom_type := (
