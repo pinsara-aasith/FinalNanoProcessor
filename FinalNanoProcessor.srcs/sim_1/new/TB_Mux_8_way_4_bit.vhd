@@ -1,11 +1,10 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY tb_Mux_8_way_4_bit IS
-END tb_Mux_8_way_4_bit;
+ENTITY TB_Mux_8_way_4_bit IS
+END TB_Mux_8_way_4_bit;
 
 ARCHITECTURE Behavioral OF tb_Mux_8_way_4_bit IS
-    -- Component declaration for the DUT (Design Under Test)
     COMPONENT Mux_8_way_4_bit
         PORT (
             D0 : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -21,7 +20,6 @@ ARCHITECTURE Behavioral OF tb_Mux_8_way_4_bit IS
         );
     END COMPONENT;
 
-    -- Signal declarations
     SIGNAL D0 : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL D1 : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL D2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -34,7 +32,6 @@ ARCHITECTURE Behavioral OF tb_Mux_8_way_4_bit IS
     SIGNAL S : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 BEGIN
-    -- Instantiate the DUT
     UUT: Mux_8_way_4_bit
     PORT MAP (
         D0 => D0,
@@ -50,34 +47,44 @@ BEGIN
     );
 
 
-    sim_process: PROCESS
+    PROCESS
     BEGIN
-        -- Initialize inputs
-        D0 <= "0000";
-        D1 <= "1111";
+
+        --INDEX NO 1 => 11 0011 0101 1011 1010
+        --INDEX NO 2 => 11 0011 0101 0000 1101
+    
+        D0 <= "1010";
+        D1 <= "1011";
         D2 <= "0101";
-        D3 <= "1010";
-        D4 <= "0011";
-        D5 <= "1100";
-        D6 <= "0110";
-        D7 <= "1001";
+        D3 <= "0011";
+        D4 <= "1101";
+        D5 <= "0000";
+        D6 <= "0101";
+        D7 <= "0011";
+        
         S <= "000";
-        wait for 10 ns;
+        wait for 10ns;
         
-        -- Test with S = "001"
         S <= "001";
-        wait for 10 ns;
-        
-        -- Test with S = "010"
+        wait for 10ns;
+
         S <= "010";
-        wait for 10 ns;
+        wait for 10ns;
         
-        -- Test with S = "111"
+        S <= "011";
+        wait for 10ns;
+
+        S <= "100";
+        wait for 10ns;
+
+        S <= "101";
+        wait for 10ns;
+
+        S <= "110";
+        wait for 10ns;
+
         S <= "111";
-        wait for 10 ns;
-        
-        -- End simulation
         wait;
-    END PROCESS sim_process;
+    END PROCESS;
 
 END Behavioral;
