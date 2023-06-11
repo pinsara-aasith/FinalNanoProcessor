@@ -5,7 +5,6 @@ ENTITY tb_Adder_3 IS
 END tb_Adder_3;
 
 ARCHITECTURE Behavioral OF tb_Adder_3 IS
-    -- Component declaration for the DUT (Design Under Test)
     COMPONENT Adder_3
         PORT (
             A : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
@@ -13,34 +12,31 @@ ARCHITECTURE Behavioral OF tb_Adder_3 IS
         );
     END COMPONENT;
 
-    -- Signal declarations
     SIGNAL A : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL Result : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 BEGIN
-    -- Instantiate the DUT
-    UUT: Adder_3
-    PORT MAP (
+
+    --INDEX NO => 11 0011 0101 1011 1010
+    
+    UUT : Adder_3
+    PORT MAP(
         A => A,
         Result => Result
     );
-
-
+    
     PROCESS
     BEGIN
-        -- Initialize inputs
-        A <= "000";
-        wait for 10 ns;
-        
-        -- Test addition operation
-        A <= "011";
-        wait for 10 ns;
-        
-        -- Test subtraction operation
-        A <= "101";
-        wait for 10 ns;
-    
-        wait;
+        A <= "010";
+        WAIT FOR 100ns;
+
+        A <= "111";
+        WAIT FOR 100ns;
+
+        A <= "110";
+        WAIT FOR 100ns;
+
+        WAIT;
     END PROCESS;
 
 END Behavioral;
