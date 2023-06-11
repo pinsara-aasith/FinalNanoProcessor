@@ -27,7 +27,7 @@ ARCHITECTURE Behavioral OF LUT_16_7_Seg IS
         "1000110", -- C
         "0100001", -- D
         "0000110", -- E
-        "0001110" -- 
+        "0001110" -- F
     );
 BEGIN
     data <= Seven_Segment_ROM(to_integer(unsigned(address)));
