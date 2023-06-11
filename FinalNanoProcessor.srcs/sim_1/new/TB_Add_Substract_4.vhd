@@ -1,10 +1,10 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
-ENTITY Add_Substract_4_TB IS
-END Add_Substract_4_TB;
+ENTITY TB_Add_Substract_4 IS
+END TB_Add_Substract_4;
 
-ARCHITECTURE behaviour OF Add_Substract_4_TB IS
+ARCHITECTURE Behavior OF Add_Substract_4_TB IS
 
    COMPONENT Add_Substract_4
       PORT (

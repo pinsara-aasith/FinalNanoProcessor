@@ -1,8 +1,8 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY tb_Adder_3 IS
-END tb_Adder_3;
+ENTITY TB_Adder_3 IS
+END TB_Adder_3;
 
 ARCHITECTURE Behavioral OF tb_Adder_3 IS
     COMPONENT Adder_3
@@ -24,7 +24,7 @@ BEGIN
         A => A,
         Result => Result
     );
-    
+
     PROCESS
     BEGIN
         A <= "010";
