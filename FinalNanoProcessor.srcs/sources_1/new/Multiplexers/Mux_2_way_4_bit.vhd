@@ -22,7 +22,7 @@ BEGIN
             WHEN '1' =>
                 Y <= D1;
             WHEN OTHERS =>
-                Y <= (OTHERS => 'X');i
+                Y <= (OTHERS => 'X');
         END CASE;
     END PROCESS;
 

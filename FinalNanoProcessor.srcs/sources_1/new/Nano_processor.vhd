@@ -6,7 +6,6 @@ ENTITY Nano_processor IS
     PORT (
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
-        Halt : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
         Overflow : OUT STD_LOGIC;
         OUT_REG : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
@@ -66,15 +65,10 @@ ARCHITECTURE Behavioral OF Nano_processor IS
         );
     END COMPONENT;
 
-    --component ROM
-    --   Port ( Mem_address : in STD_LOGIC_VECTOR (2 downto 0);
-    --      Instruction : out STD_LOGIC_VECTOR (11 downto 0));
-    --end component;
-
     COMPONENT ROM
         PORT (
-            Instruction : OUT STD_LOGIC_VECTOR (11 DOWNTO 0));
-        Mem_address : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+            Instruction : OUT STD_LOGIC_VECTOR (11 DOWNTO 0);
+            Mem_address : IN STD_LOGIC_VECTOR (2 DOWNTO 0));
     END COMPONENT;
 
     COMPONENT Instruction_decoder
@@ -102,8 +96,8 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             Result : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             AddSub_Ctrl : IN STD_LOGIC;
-            Zero_flag : OUT STD_LOGIC;
-            Overflow_flag : OUT STD_LOGIC);
+            Zero_flag : OUT STD_LOGIC
+            );
             -- Carry_flag : OUT STD_LOGIC;
             -- Sign_flag : OUT STD_LOGIC;
             -- Parity_flag : OUT STD_LOGIC
@@ -140,21 +134,20 @@ ARCHITECTURE Behavioral OF Nano_processor IS
     SIGNAL RB0, RB1, RB2, RB3, RB4, RB5, RB6, RB7 : STD_LOGIC_VECTOR (3 DOWNTO 0);
 
     -- ADD/SUB
-    SIGNAL add_out, A, B : STD_LOGIC_VECTOR (3 DOWNTO 0);
+    SIGNAL Adder_Out, A, B : STD_LOGIC_VECTOR (3 DOWNTO 0);
 
     -- PROGRAM COUNTER
     SIGNAL LoadProgRom : STD_LOGIC;
     SIGNAL cout : STD_LOGIC;
 
 BEGIN
-
-    Adder3Bit0 : Adder_3
+    Adder_3_Bit : Adder_3
     PORT MAP(
         A => S0, -- INPUT FROM THE PC
         Result => S1 -- INCREMENTED VALUE
     );
 
-    Mux2Way3Bit : Mux_2_way_3_bit
+    Jump_selector : Mux_2_way_3_bit
     PORT MAP(
         D0 => S1,
         D1 => Jump_address0,
@@ -162,30 +155,30 @@ BEGIN
         Y => PC_Input
     );
 
-    Mux_2_way_4_bit_0 : Mux_2_way_4_bit
+    Load_selector : Mux_2_way_4_bit
     PORT MAP(
         S => Load_sel0,
-        D0 => add_out,
+        D0 => Adder_Out,
         D1 => Imd_val0,
         Y => Reg_bank_input
     );
 
-    Program_counter0 : Program_counter
+    PC : Program_counter
     PORT MAP(
-        D => PC_Input, -- input
+        D => PC_Input,
         Clk => Clk,
-        Q => S0, -- output
-        Res => Res, -- RESET THE VALUE TO 000
+        Q => S0,
+        Res => Res,
         Load => LoadProgRom
     );
 
-    ROM0 : SAMPLE_CODE_ROM
+    Program_ROM : ROM
     PORT MAP(
         Mem_address => S2,
         Instruction => PR_OUT
     );
 
-    Instruction_decoder0 : Instruction_decoder
+    ID : Instruction_decoder
     PORT MAP(
         Instruction => PR_OUT,
         Reg_en => Reg_en0,
@@ -199,7 +192,7 @@ BEGIN
         Zero_flag => ZERO_FLAG
     );
 
-    Register_bank0 : Register_bank
+    Reg_bank : Register_bank
     PORT MAP(
         B0 => RB0,
         B1 => RB1,
@@ -215,17 +208,16 @@ BEGIN
         Reset_Register_bank => Res
     );
 
-    Add_Substract_40 : Add_Substract_4
+    Add_Substract_4_0 : Add_Substract_4
     PORT MAP(
         A => A,
         B => B,
-        Ctrl => Add_sub_sel0,
-        S => add_out,
-        Zero_flag => ZERO_FLAG,
-        Overflow_flag => Overflow
+        AddSub_Ctrl => Add_sub_sel0,
+        Result => Adder_Out,
+        Zero_flag => ZERO_FLAG
     );
 
-    Mux_8_way_4_bit0 : Mux_8_way_4_bit
+    Reg_A_selector : Mux_8_way_4_bit
     PORT MAP(
         D0 => RB0,
         D1 => RB1,
@@ -239,7 +231,7 @@ BEGIN
         S => Reg_select_A0
     );
 
-    Mux_8_way_4_bit1 : Mux_8_way_4_bit
+    Reg_B_selector : Mux_8_way_4_bit
     PORT MAP(
         D0 => RB0,
         D1 => RB1,

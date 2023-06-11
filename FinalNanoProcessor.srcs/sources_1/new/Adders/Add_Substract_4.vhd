@@ -39,14 +39,12 @@ ENTITY Add_Substract_4 IS
 
         Zero_flag : OUT STD_LOGIC;
         Carry_flag : OUT STD_LOGIC;
-        Overflow_flag : OUT STD_LOGIC;
-        Sign_flag : OUT STD_LOGIC;
-        Parity_flag : OUT STD_LOGIC
+        Sign_flag : OUT STD_LOGIC
     );
 END Add_Substract_4;
 
 ARCHITECTURE Behavioral OF Add_Substract_4 IS
-    COMPONENT RCA
+    COMPONENT RCA_4
         PORT (
             A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             B : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -57,15 +55,15 @@ ARCHITECTURE Behavioral OF Add_Substract_4 IS
     END COMPONENT;
 
     SIGNAL Intermediate_B : STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL Result : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL S : STD_LOGIC_VECTOR(3 DOWNTO 0);
 BEGIN
-    RCA_0 : RCA
+    RCA_0 : RCA_4
     PORT MAP(
         A => A,
         B => Intermediate_B,
         C_in => AddSub_Ctrl, -- AddSub_Ctrl signal to decide addition(0) or subtraction(1)
-        S => Result,
-        C_Out => FA0_C
+        S => S,
+        C_Out => Carry_flag
     );
 
     -- subtraction logic  
@@ -76,11 +74,8 @@ BEGIN
 
     Result <= S;
 
-    Sign_flag <= Result(7);
-    Overflow_flag <= (NOT AddSub_Ctrl) AND (A(3) XNOR B(3)) AND(A(3) XOR S0(7));
-    Zero_flag <= (NOT Result(0)) AND (NOT Result(1)) AND (NOT Result(2)) AND (NOT Result(3));
+    Sign_flag <= S(3);
+    Zero_flag <= (NOT S(0)) AND (NOT S(1)) AND (NOT S(2)) AND (NOT S(3));
     -- Overflow occurs only when addition, both have same sign, and the output has opposite sign
     -- 0 for odd, 1 for even (Set if the least-significant byte of the result contains an even number of 1 bits; cleared otherwise.)
-    Parity_flag <= NOT(S0(0) XOR S0(1) XOR S0(2) XOR S0(3));
-
 END Behavioral;

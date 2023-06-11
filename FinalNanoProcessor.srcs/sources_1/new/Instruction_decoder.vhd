@@ -69,7 +69,8 @@ BEGIN
         ELSIF (Ins_MOV = '1') THEN
             Load_sel <= '1';
             Imd_val <= Instruction(3 DOWNTO 0);
-            Reg_en <= Instruction(11 DOWNTO 10);
+            --warning
+            Reg_en <= Instruction(11 DOWNTO 9);
 
         ELSIF (Ins_JZR = '1') THEN
             Reg_select_A <= Instruction(11 DOWNTO 9); -- GET THE VALUE OF THE REGISTER RRR IN THE REGISTER A

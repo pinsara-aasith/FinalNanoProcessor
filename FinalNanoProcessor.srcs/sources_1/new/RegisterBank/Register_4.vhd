@@ -17,7 +17,7 @@ BEGIN
 
     PROCESS (Clk, Res) BEGIN
         IF (Res = '1') THEN
-            Q <= '0000';
+            Q <= "0000";
         ELSIF (rising_edge(Clk)) THEN
             IF (En = '1') THEN
                 Q <= D;

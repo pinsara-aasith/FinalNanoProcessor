@@ -10,7 +10,7 @@ ENTITY ROM IS
 END ROM;
 
 ARCHITECTURE Behavioral OF ROM IS
-    TYPE rom_type IS ARRAY (0 TO 6) OF STD_LOGIC_VECTOR(11 DOWNTO 0);
+    TYPE rom_type IS ARRAY (0 TO 5) OF STD_LOGIC_VECTOR(11 DOWNTO 0);
 
     SIGNAL rom : rom_type := (
         "100010001010", -- MOVI R1, 10 ; R1 ? 10                 format: 10 RRR 000 dddd
