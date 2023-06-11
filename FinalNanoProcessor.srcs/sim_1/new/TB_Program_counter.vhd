@@ -3,13 +3,13 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
 
-ENTITY PC_Sim IS
+ENTITY TB_Program_counter IS
     --  Port ( );
-END PC_Sim;
+END TB_Program_counter;
 
 
-ARCHITECTURE Behavioral OF PC_Sim IS
-    COMPONENT PC
+ARCHITECTURE Behavioral OF TB_Program_counter IS
+    COMPONENT Program_counter
         PORT (
             D : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             Res : IN STD_LOGIC;
@@ -19,7 +19,7 @@ ARCHITECTURE Behavioral OF PC_Sim IS
     END COMPONENT;
 
     SIGNAL D : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL Res, Clk : STD_LOGIC;
+    SIGNAL Res, Clk, Load : STD_LOGIC;
     SIGNAL Q : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
     CONSTANT Clk_period : TIME := 10 ns;
@@ -28,10 +28,11 @@ BEGIN
 
     --INDEX NO => 11 0011 0101 0000 1101
 
-    UUT : PC PORT MAP(
+    UUT : Program_counter PORT MAP(
         D => D,
         Res => Res,
         Clk => Clk,
+        Load => Load,
         Q => Q
     );
 

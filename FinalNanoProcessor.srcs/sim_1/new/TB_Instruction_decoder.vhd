@@ -1,8 +1,8 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY tb_Instruction_decoder IS
-END tb_Instruction_decoder;
+ENTITY TB_Instruction_decoder IS
+END TB_Instruction_decoder;
 
 ARCHITECTURE Behavioral OF tb_Instruction_decoder IS
     -- Signal declarations

@@ -4,7 +4,7 @@ USE ieee.std_logic_1164.ALL;
 ENTITY TB_Add_Substract_4 IS
 END TB_Add_Substract_4;
 
-ARCHITECTURE Behavior OF Add_Substract_4_TB IS
+ARCHITECTURE Behavioral OF TB_Add_Substract_4 IS
 
    COMPONENT Add_Substract_4
       PORT (
@@ -14,7 +14,7 @@ ARCHITECTURE Behavior OF Add_Substract_4_TB IS
          AddSub_Ctrl : IN STD_LOGIC;
          Zero_flag : OUT STD_LOGIC;
          Carry_flag : OUT STD_LOGIC;
-         Sign_flag : OUT STD_LOGIC;
+         Sign_flag : OUT STD_LOGIC
       );
    END COMPONENT;
 
@@ -30,17 +30,6 @@ ARCHITECTURE Behavior OF Add_Substract_4_TB IS
    SIGNAL Sign_flag : STD_LOGIC;
 
 BEGIN
-
-A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-Result : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-
-AddSub_Ctrl : IN STD_LOGIC;
-
-Zero_flag : OUT STD_LOGIC;
-Carry_flag : OUT STD_LOGIC;
-Sign_flag : OUT STD_LOGIC
-
    UUT : Add_Substract_4 PORT MAP(
       A => A,
       B => B,
@@ -49,7 +38,7 @@ Sign_flag : OUT STD_LOGIC
 
       Zero_flag => Zero_flag,
       Carry_flag => Carry_flag,
-      Sign_flag => Sign_flag,
+      Sign_flag => Sign_flag
    );
 
    PROCESS
@@ -88,3 +77,4 @@ Sign_flag : OUT STD_LOGIC
 
       WAIT;
    END PROCESS;
+ END Behavioral;
