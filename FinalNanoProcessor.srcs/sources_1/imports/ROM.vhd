@@ -18,7 +18,7 @@ ARCHITECTURE Behavioral OF ROM IS
         "010100000000", -- NEG R2      ; R2 ? -R2                format: 01 RRR 0000000
         "000010100000", -- ADD R1, R2  ; R1 ? R1 + R2            format: 00 RaRaRa RbRbRb 0000
         "110010000110", -- JZR R1, 7   ; If R1 = 0 jump to line 7 format: 11 RRR 0000 ddd
-        "110000000011", -- JZR R0, 3   ; If R0 = 0 jump to line 3 format: 11 RRR 0000 ddd
+        "110000000011" -- JZR R0, 3   ; If R0 = 0 jump to line 3 format: 11 RRR 0000 ddd
         -- no line 7
     );
 
