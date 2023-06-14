@@ -15,7 +15,7 @@ ARCHITECTURE Behavioral OF Mux_2_way_3_bit IS
 BEGIN
 
     PROCESS (S, D0, D1)
-    
+
     BEGIN
         CASE S IS
             WHEN '0' =>

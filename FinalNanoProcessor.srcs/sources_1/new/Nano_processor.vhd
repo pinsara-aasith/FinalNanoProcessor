@@ -8,13 +8,11 @@ ENTITY Nano_processor IS
         Res : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
         Sign : OUT STD_LOGIC;
-        Overflow: OUT STD_LOGIC; 
-        Carry: OUT STD_LOGIC; 
+        Overflow : OUT STD_LOGIC;
+        Carry : OUT STD_LOGIC;
         Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END Nano_processor;
-
-
 ARCHITECTURE Behavioral OF Nano_processor IS
 
     COMPONENT Adder_3
@@ -79,7 +77,7 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             Instruction : IN STD_LOGIC_VECTOR (11 DOWNTO 0);
             Load_sel : OUT STD_LOGIC;
 
-                        Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+            Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
             Reg_bank_En : OUT STD_LOGIC;
 
             Reg_select_A : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
@@ -253,12 +251,10 @@ BEGIN
     );
 
     Zero <= Zero_flag;
-    
+
     Sign <= Sign_flag;
     Overflow <= Overflow_flag;
     Carry <= Carry_flag;
-            
-
     S2 <= S0;
     Value <= RB7;
 END Behavioral;

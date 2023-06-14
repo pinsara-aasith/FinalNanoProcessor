@@ -12,8 +12,6 @@ ENTITY Register_4 IS
 END Register_4;
 
 ARCHITECTURE Behavioral OF Register_4 IS
-
-
 BEGIN
     PROCESS (Clk) BEGIN
         IF (rising_edge(Clk)) THEN -- respond when clock rises

@@ -21,7 +21,7 @@ ARCHITECTURE Behavioral OF Adder_3 IS
 
     SIGNAL C_in : STD_LOGIC;
     SIGNAL C_out : STD_LOGIC;
-    
+
     SIGNAL newA : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL newResult : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL B : STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -34,9 +34,9 @@ BEGIN
         S => newResult,
         C_Out => C_out
     );
-    
-    newA(2 downto 0) <= A;
-    Result <= newResult(2 downto 0);
+
+    newA(2 DOWNTO 0) <= A;
+    Result <= newResult(2 DOWNTO 0);
     newA(3) <= '0';
 
     C_in <= '1';

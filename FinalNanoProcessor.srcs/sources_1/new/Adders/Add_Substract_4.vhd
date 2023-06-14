@@ -67,7 +67,6 @@ BEGIN
         C_Out => Carry_flag
     );
 
-    -- subtraction logic  
     Intermediate_B(0) <= B(0) XOR AddSub_Ctrl;
     Intermediate_B(1) <= B(1) XOR AddSub_Ctrl;
     Intermediate_B(2) <= B(2) XOR AddSub_Ctrl;
@@ -80,6 +79,4 @@ BEGIN
 
     Overflow_flag <= (NOT AddSub_Ctrl) AND (A(3) XNOR Intermediate_B(3)) AND (A(3) XOR S(3));
 
-    -- Overflow occurs only when addition, both have same sign, and the output has opposite sign
-    -- 0 for odd, 1 for even (Set if the least-significant byte of the result contains an even number of 1 bits; cleared otherwise.)
 END Behavioral;

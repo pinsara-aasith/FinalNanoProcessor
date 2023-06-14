@@ -4,8 +4,8 @@ USE IEEE.STD_LOGIC_1164.ALL;
 ENTITY Instruction_decoder IS
     PORT (
         Instruction : IN STD_LOGIC_VECTOR (11 DOWNTO 0);
-            Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-                Reg_bank_En : OUT STD_LOGIC;
+        Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+        Reg_bank_En : OUT STD_LOGIC;
 
         Load_sel : OUT STD_LOGIC;
 
@@ -25,43 +25,38 @@ END Instruction_decoder;
 ARCHITECTURE Behavioral OF Instruction_decoder IS
 
 BEGIN
-    PROCESS (Instruction(11 DOWNTO 0),Register_check_for_jump)
+    PROCESS (Instruction(11 DOWNTO 0), Register_check_for_jump)
     BEGIN
         Jump <= '0';
         Reg_bank_En <= '0';
-        
-        IF (Instruction(11 DOWNTO 10) = "00") THEN
---            WHEN "00" =>  --add
-                Reg_select_A <= Instruction(9 DOWNTO 7);
-                Reg_select_B <= Instruction(6 DOWNTO 4);
-                Add_sub_sel <= '0';
-                Load_sel <= '0';
-                Reg_en <= Instruction(9 DOWNTO 7);
-                Reg_bank_En <= '1';
---            WHEN "01" => --neg
-        ELSIF (Instruction(11 DOWNTO 10) = "01") THEN
-                Reg_select_A <= "000"; -- ALWAYS 0
-                Reg_select_B <= Instruction(9 DOWNTO 7);
-                Reg_en <= Instruction(9 DOWNTO 7);
-                Reg_bank_En <= '1';
-                Add_sub_sel <= '1';
-                Load_sel <= '0';
-                
-        ELSIF (Instruction(11 DOWNTO 10) = "10") THEN
---            WHEN "10" =>  -- movi
-                Load_sel <= '1';
-                Imd_val <= Instruction(3 DOWNTO 0);
-                Reg_bank_En <= '1';
-                --warning
-                Reg_en <= Instruction(9 DOWNTO 7);
---            WHEN OTHERS => -- jzr
 
-        ELSIF (Instruction(11 DOWNTO 10) = "11") THEN
-                Reg_select_A <= Instruction(9 DOWNTO 7); -- GET THE VALUE OF THE REGISTER RRR IN THE REGISTER A
-                IF (Register_check_for_jump = "0000") THEN
-                    Jump_address <= Instruction(2 DOWNTO 0);
-                    Jump <= '1';
-                END IF;
+        IF (Instruction(11 DOWNTO 10) = "00") THEN -- ADD
+            Reg_select_A <= Instruction(9 DOWNTO 7);
+            Reg_select_B <= Instruction(6 DOWNTO 4);
+            Add_sub_sel <= '0';
+            Load_sel <= '0';
+            Reg_en <= Instruction(9 DOWNTO 7);
+            Reg_bank_En <= '1';
+        ELSIF (Instruction(11 DOWNTO 10) = "01") THEN -- NEG
+            Reg_select_A <= "000";
+            Reg_select_B <= Instruction(9 DOWNTO 7);
+            Reg_en <= Instruction(9 DOWNTO 7);
+            Reg_bank_En <= '1';
+            Add_sub_sel <= '1';
+            Load_sel <= '0';
+
+        ELSIF (Instruction(11 DOWNTO 10) = "10") THEN -- MOVI
+            Load_sel <= '1';
+            Imd_val <= Instruction(3 DOWNTO 0);
+            Reg_bank_En <= '1';
+            Reg_en <= Instruction(9 DOWNTO 7);
+
+        ELSIF (Instruction(11 DOWNTO 10) = "11") THEN -- JZR
+            Reg_select_A <= Instruction(9 DOWNTO 7);
+            IF (Register_check_for_jump = "0000") THEN
+                Jump_address <= Instruction(2 DOWNTO 0);
+                Jump <= '1';
+            END IF;
         END IF;
     END PROCESS;
 END Behavioral;

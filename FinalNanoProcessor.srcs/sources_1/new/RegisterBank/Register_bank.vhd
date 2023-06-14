@@ -29,16 +29,16 @@ ARCHITECTURE Behavioral OF Register_bank IS
             Clk : IN STD_LOGIC;
             Res : IN STD_LOGIC;
             Q : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
-            );
+        );
     END COMPONENT;
 
     COMPONENT Decoder_3_to_8
         PORT (
             I : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             Y : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-            EN: IN STD_LOGIC);
+            EN : IN STD_LOGIC);
     END COMPONENT;
-    
+
     SIGNAL Y0 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
 BEGIN
@@ -48,7 +48,7 @@ BEGIN
         Y => Y0,
         EN => Reg_bank_En
     );
-    
+
     Reg0 : Register_4 PORT MAP(
         D => "0000",
         En => '1',
@@ -67,7 +67,7 @@ BEGIN
 
     Reg2 : Register_4 PORT MAP(
         D => A,
-            En => Y0(2),
+        En => Y0(2),
         Clk => Clk,
         Res => Reset_Register_bank,
         Q => B2
@@ -75,7 +75,7 @@ BEGIN
 
     Reg3 : Register_4 PORT MAP(
         D => A,
-            En => Y0(3),
+        En => Y0(3),
         Clk => Clk,
         Res => Reset_Register_bank,
         Q => B3
@@ -83,7 +83,7 @@ BEGIN
 
     Reg4 : Register_4 PORT MAP(
         D => A,
-            En => Y0(4),
+        En => Y0(4),
         Clk => Clk,
         Res => Reset_Register_bank,
         Q => B4

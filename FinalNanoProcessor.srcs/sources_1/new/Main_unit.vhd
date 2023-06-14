@@ -6,8 +6,8 @@ ENTITY Main_unit IS
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
-        Overflow: OUT STD_LOGIC; 
-        Carry: OUT STD_LOGIC; 
+        Overflow : OUT STD_LOGIC;
+        Carry : OUT STD_LOGIC;
         Sign : OUT STD_LOGIC;
         S_7Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
         Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
