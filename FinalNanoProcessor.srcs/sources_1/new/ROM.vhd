@@ -13,14 +13,14 @@ ARCHITECTURE Behavioral OF ROM IS
     TYPE rom_type IS ARRAY (0 TO 7) OF STD_LOGIC_VECTOR(11 DOWNTO 0);
 
     SIGNAL rom : rom_type := (
-       "100100000011", --MOVI R2, 3	            10 RRR 000 0011
+       "100100000011", --MOVI R2, 3	           
             "101110000000", --MOVI R7, 0                10 RRR 000 0000
             "101000001111", --MOVI R4, -1                10 RRR 000 1110
-            "001110100000", --ADD R7, R2                00 RRR RRR 0000 
-            "000101000000", --ADD R2, R4                00 RRR RRR 0000
-            "110100000111", --JZR R2, 8                    11 RRR 0000 111
-            "110000000011", --JZR R0,4                    11 RRR 0000 100
-            "001110000000"
+            "001110100000", --ADD R7,R2                00 RRR RRR 0000 
+            "000101000000", --ADD R2,R4                00 RRR RRR 0000
+            "110100000111", --JZR R2,7                    11 RRR 0000 111
+            "110000000011", --JZR R0,3                    11 RRR 0000 100
+            "110000000111"  --JZR R0,7
     );
 
 BEGIN
