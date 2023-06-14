@@ -7,16 +7,16 @@ END TB_Main_unit;
 ARCHITECTURE Behavioral OF TB_Main_unit IS
 
     COMPONENT Main_unit
-    PORT (
-        Clk : IN STD_LOGIC;
-        Res : IN STD_LOGIC;
-        Zero : OUT STD_LOGIC;
-        Overflow : OUT STD_LOGIC;
-        Carry : OUT STD_LOGIC;
-        S_7Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
-        Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-        Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
-    );
+        PORT (
+            Clk : IN STD_LOGIC;
+            Res : IN STD_LOGIC;
+            Zero : OUT STD_LOGIC;
+            Overflow : OUT STD_LOGIC;
+            Carry : OUT STD_LOGIC;
+            S_7Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+            Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+            Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+        );
     END COMPONENT;
 
     SIGNAL Clk : STD_LOGIC := '0';
@@ -26,7 +26,7 @@ ARCHITECTURE Behavioral OF TB_Main_unit IS
     SIGNAL Value : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
     SIGNAL S_7Seg : STD_LOGIC_VECTOR(6 DOWNTO 0);
-    SIGNAL Anode : STD_LOGIC_VECTOR (3 downto 0);
+    SIGNAL Anode : STD_LOGIC_VECTOR (3 DOWNTO 0);
 
 BEGIN
     -- UUT instantiation

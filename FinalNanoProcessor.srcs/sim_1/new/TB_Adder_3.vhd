@@ -18,7 +18,7 @@ ARCHITECTURE Behavioral OF tb_Adder_3 IS
 BEGIN
 
     --INDEX NO => 11 0011 0101 1011 1010
-    
+
     UUT : Adder_3
     PORT MAP(
         A => A,

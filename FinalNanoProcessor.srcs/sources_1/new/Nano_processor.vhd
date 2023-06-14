@@ -44,7 +44,7 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             B5 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             B6 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             B7 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-            Reset_Register_bank : IN STD_LOGIC
+            Reset_Reg_Bank : IN STD_LOGIC
         );
     END COMPONENT;
 
@@ -207,7 +207,7 @@ BEGIN
         Reg_bank_En => Reg_bank_En,
         A => Reg_bank_input,
         Clk => Clk,
-        Reset_Register_bank => Res
+        Reset_Reg_Bank => Res
     );
 
     Add_Substract_4_0 : Add_Substract_4

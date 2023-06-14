@@ -7,7 +7,7 @@ ENTITY Register_bank IS
         Reg_En : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
         A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
         Clk : IN STD_LOGIC;
-        Reset_Register_bank : IN STD_LOGIC;
+        Reset_Reg_Bank : IN STD_LOGIC;
         B0 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         B1 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         B2 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -53,7 +53,7 @@ BEGIN
         D => "0000",
         En => '1',
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B1
     );
 
@@ -61,7 +61,7 @@ BEGIN
         D => A,
         En => Y0(1),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B1
     );
 
@@ -69,7 +69,7 @@ BEGIN
         D => A,
         En => Y0(2),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B2
     );
 
@@ -77,7 +77,7 @@ BEGIN
         D => A,
         En => Y0(3),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B3
     );
 
@@ -85,7 +85,7 @@ BEGIN
         D => A,
         En => Y0(4),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B4
     );
 
@@ -93,7 +93,7 @@ BEGIN
         D => A,
         En => Y0(5),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B5
     );
 
@@ -101,7 +101,7 @@ BEGIN
         D => A,
         En => Y0(6),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B6
     );
 
@@ -109,7 +109,7 @@ BEGIN
         D => A,
         En => Y0(7),
         Clk => Clk,
-        Res => Reset_Register_bank,
+        Res => Reset_Reg_Bank,
         Q => B7
     );
 

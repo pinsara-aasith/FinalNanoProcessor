@@ -32,8 +32,8 @@ ARCHITECTURE Behavioral OF tb_Mux_8_way_4_bit IS
     SIGNAL S : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 BEGIN
-    UUT: Mux_8_way_4_bit
-    PORT MAP (
+    UUT : Mux_8_way_4_bit
+    PORT MAP(
         D0 => D0,
         D1 => D1,
         D2 => D2,
@@ -45,14 +45,12 @@ BEGIN
         Y => Y,
         S => S
     );
-
-
     PROCESS
     BEGIN
 
         --INDEX NO 1 => 11 0011 0101 1011 1010
         --INDEX NO 2 => 11 0011 0101 0000 1101
-    
+
         D0 <= "1010";
         D1 <= "1011";
         D2 <= "0101";
@@ -61,30 +59,30 @@ BEGIN
         D5 <= "0000";
         D6 <= "0101";
         D7 <= "0011";
-        
+
         S <= "000";
-        wait for 100ns;
-        
+        WAIT FOR 100ns;
+
         S <= "001";
-        wait for 100ns;
+        WAIT FOR 100ns;
 
         S <= "010";
-        wait for 100ns;
-        
+        WAIT FOR 100ns;
+
         S <= "011";
-        wait for 100ns;
+        WAIT FOR 100ns;
 
         S <= "100";
-        wait for 100ns;
+        WAIT FOR 100ns;
 
         S <= "101";
-        wait for 100ns;
+        WAIT FOR 100ns;
 
         S <= "110";
-        wait for 100ns;
+        WAIT FOR 100ns;
 
         S <= "111";
-        wait;
+        WAIT;
     END PROCESS;
 
 END Behavioral;

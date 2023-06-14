@@ -80,4 +80,4 @@ BEGIN
 
       WAIT;
    END PROCESS;
- END Behavioral;
+END Behavioral;

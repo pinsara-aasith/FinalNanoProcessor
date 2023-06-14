@@ -30,7 +30,7 @@ BEGIN
     );
 
     --INDEX NO => 11 0011 0101 1011 1010
-    
+
     PROCESS
     BEGIN
         -- Initialize inputs

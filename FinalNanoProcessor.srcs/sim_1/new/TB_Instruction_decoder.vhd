@@ -40,8 +40,8 @@ BEGIN
     UUT : Instruction_decoder
     PORT MAP(
         Instruction => Instruction,
-            Reg_en => Reg_en,
-                Reg_bank_En => Reg_bank_En,
+        Reg_en => Reg_en,
+        Reg_bank_En => Reg_bank_En,
         Load_sel => Load_sel,
         Imd_val => Imd_val,
         Reg_select_A => Reg_select_A,

@@ -1,13 +1,9 @@
 
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-
-
 ENTITY TB_Program_counter IS
     --  Port ( );
 END TB_Program_counter;
-
-
 ARCHITECTURE Behavioral OF TB_Program_counter IS
     COMPONENT Program_counter
         PORT (

@@ -120,9 +120,9 @@
       <obj_property name="ElementShortName">Clk</obj_property>
       <obj_property name="ObjectShortName">Clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Reset_Register_bank" type="logic">
-      <obj_property name="ElementShortName">Reset_Register_bank</obj_property>
-      <obj_property name="ObjectShortName">Reset_Register_bank</obj_property>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Reset_Reg_Bank" type="logic">
+      <obj_property name="ElementShortName">Reset_Reg_Bank</obj_property>
+      <obj_property name="ObjectShortName">Reset_Reg_Bank</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B0" type="array">
       <obj_property name="ElementShortName">B0[3:0]</obj_property>
