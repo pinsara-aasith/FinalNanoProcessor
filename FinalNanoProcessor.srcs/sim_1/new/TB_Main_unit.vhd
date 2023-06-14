@@ -1,10 +1,10 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY Main_unit_tb IS
-END Main_unit_tb;
+ENTITY TB_Main_unit IS
+END TB_Main_unit;
 
-ARCHITECTURE behavior OF Main_unit_tb IS
+ARCHITECTURE Behavioral OF TB_Main_unit IS
 
     COMPONENT Main_unit
     PORT (
@@ -12,6 +12,7 @@ ARCHITECTURE behavior OF Main_unit_tb IS
         Res : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
         Overflow : OUT STD_LOGIC;
+        Carry : OUT STD_LOGIC;
         S_7Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
         Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
@@ -20,81 +21,45 @@ ARCHITECTURE behavior OF Main_unit_tb IS
 
     SIGNAL Clk : STD_LOGIC := '0';
 
-    SIGNAL Res, Zero, Overflow : STD_LOGIC;
-    SIGNAL S_7Seg, Anode, Value : STD_LOGIC_VECTOR(6 DOWNTO 0);
+    -- Other signals
+    SIGNAL Res, Zero, Overflow, Carry : STD_LOGIC;
+    SIGNAL Value : STD_LOGIC_VECTOR(3 DOWNTO 0);
+
+    SIGNAL S_7Seg : STD_LOGIC_VECTOR(6 DOWNTO 0);
+    SIGNAL Anode : STD_LOGIC_VECTOR (3 downto 0);
 
 BEGIN
-    UUT: Main_unit
-    PORT MAP (
+    -- UUT instantiation
+    UUT : Main_unit
+    PORT MAP(
         Clk => Clk,
         Res => Res,
         Zero => Zero,
         Overflow => Overflow,
+        Carry => Carry,
+        Value => Value,
         S_7Seg => S_7Seg,
-        Anode => Anode,
-        Value => Value
+        Anode => Anode
     );
 
-    -- Clock process
-    CLK_PROCESS :PROCESS
+    -- Clock generation process
+    PROCESS
     BEGIN
         Clk <= '0';
-        WAIT FOR 10 ns;
+        WAIT FOR 5 NS;
         Clk <= '1';
-        WAIT FOR 10 ns;
+        WAIT FOR 5 NS;
     END PROCESS;
 
     -- Stimulus process
-STIM_PROCESS :PROCESS
-BEGIN
-    -- Initialize inputs
-    Res <= '0';
+    PROCESS
+    BEGIN
+        -- Initialize reset
+        Res <= '1';
+        WAIT FOR 40 NS;
+        Res <= '0';
 
-    -- Wait for 10 ns for reset to take effect
-    WAIT FOR 10 ns;
+        WAIT;
+    END PROCESS;
 
-    -- Apply test stimulus
-    -- Load instructions into the program ROM
-    -- The instructions for adding numbers from 1 to 3 are:
-    -- Address 0: Load immediate value 1 to register 0
-    -- Address 1: Add register 0 with immediate value 2 and store the result in register 0
-    -- Address 2: Add register 0 with immediate value 3 and store the result in register 0
-    -- Address 3: Halt instruction
-    -- These instructions should result in the value in register 0 being 6 after execution
-
-    -- Load instruction 0: Load immediate value 1 to register 0
-    LoadProgRom <= '1';
-    PC_Input <= "000";
-    WAIT FOR 10 ns;
-    LoadProgRom <= '0';
-
-    -- Load instruction 1: Add register 0 with immediate value 2 and store the result in register 0
-    LoadProgRom <= '1';
-    PC_Input <= "001";
-    WAIT FOR 10 ns;
-    LoadProgRom <= '0';
-
-    -- Load instruction 2: Add register 0 with immediate value 3 and store the result in register 0
-    LoadProgRom <= '1';
-    PC_Input <= "010";
-    WAIT FOR 10 ns;
-    LoadProgRom <= '0';
-
-    -- Load instruction 3: Halt instruction
-    LoadProgRom <= '1';
-    PC_Input <= "011";
-    WAIT FOR 10 ns;
-    LoadProgRom <= '0';
-
-    -- Wait for the result to stabilize
-    WAIT FOR 10 ns;
-
-    -- Print the output value
-    REPORT "Output Value: " & INTEGER'IMAGE(to_integer(unsigned(Value))) & " Expected: 6";
-
-    -- Wait for simulation to finish
-    WAIT;
-END PROCESS;
-
-
-END behavior;
+END Behavioral;

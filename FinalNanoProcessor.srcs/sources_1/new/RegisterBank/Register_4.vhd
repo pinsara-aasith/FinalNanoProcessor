@@ -13,16 +13,16 @@ END Register_4;
 
 ARCHITECTURE Behavioral OF Register_4 IS
 
-BEGIN
 
-    PROCESS (Clk, Res) BEGIN
-        IF (Res = '1') THEN
-            Q <= "0000";
-        ELSIF (rising_edge(Clk)) THEN
-            IF (En = '1') THEN
+BEGIN
+    PROCESS (Clk) BEGIN
+        IF (rising_edge(Clk)) THEN -- respond when clock rises
+            IF En = '1' THEN -- Enable should be set
                 Q <= D;
             END IF;
         END IF;
+        IF res = '1' THEN
+            Q <= "0000";
+        END IF;
     END PROCESS;
-
 END Behavioral;

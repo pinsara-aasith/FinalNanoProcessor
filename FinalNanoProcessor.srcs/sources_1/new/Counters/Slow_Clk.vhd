@@ -18,7 +18,7 @@ BEGIN
     PROCESS (Clk_in) BEGIN
         IF (rising_edge(Clk_in)) THEN
             count <= count + 1;
-            IF (count = 2) THEN
+            IF (count = 1) THEN
                 Clk_status <= NOT Clk_status;
                 Clk_out <= Clk_status;
                 count <= 1;

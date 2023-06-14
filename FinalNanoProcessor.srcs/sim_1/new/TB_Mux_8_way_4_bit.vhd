@@ -63,25 +63,25 @@ BEGIN
         D7 <= "0011";
         
         S <= "000";
-        wait for 10ns;
+        wait for 100ns;
         
         S <= "001";
-        wait for 10ns;
+        wait for 100ns;
 
         S <= "010";
-        wait for 10ns;
+        wait for 100ns;
         
         S <= "011";
-        wait for 10ns;
+        wait for 100ns;
 
         S <= "100";
-        wait for 10ns;
+        wait for 100ns;
 
         S <= "101";
-        wait for 10ns;
+        wait for 100ns;
 
         S <= "110";
-        wait for 10ns;
+        wait for 100ns;
 
         S <= "111";
         wait;

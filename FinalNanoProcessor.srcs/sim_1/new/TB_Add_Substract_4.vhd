@@ -13,6 +13,7 @@ ARCHITECTURE Behavioral OF TB_Add_Substract_4 IS
          Result : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
          AddSub_Ctrl : IN STD_LOGIC;
          Zero_flag : OUT STD_LOGIC;
+         Overflow_flag : OUT STD_LOGIC;
          Carry_flag : OUT STD_LOGIC;
          Sign_flag : OUT STD_LOGIC
       );
@@ -26,6 +27,7 @@ ARCHITECTURE Behavioral OF TB_Add_Substract_4 IS
    -- Outputs
    SIGNAL Result : STD_LOGIC_VECTOR(3 DOWNTO 0);
    SIGNAL Zero_flag : STD_LOGIC;
+   SIGNAL Overflow_flag : STD_LOGIC;
    SIGNAL Carry_flag : STD_LOGIC;
    SIGNAL Sign_flag : STD_LOGIC;
 
@@ -37,6 +39,7 @@ BEGIN
       AddSub_Ctrl => AddSub_Ctrl,
 
       Zero_flag => Zero_flag,
+      Overflow_flag => Overflow_flag,
       Carry_flag => Carry_flag,
       Sign_flag => Sign_flag
    );

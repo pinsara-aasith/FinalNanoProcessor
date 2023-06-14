@@ -15,7 +15,8 @@ ENTITY Register_bank IS
         B4 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         B5 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         B6 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
-        B7 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+        B7 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
+        Reg_bank_En : IN STD_LOGIC
     );
 END Register_bank;
 
@@ -34,15 +35,26 @@ ARCHITECTURE Behavioral OF Register_bank IS
     COMPONENT Decoder_3_to_8
         PORT (
             I : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-            Y : OUT STD_LOGIC_VECTOR (7 DOWNTO 0));
+            Y : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+            EN: IN STD_LOGIC);
     END COMPONENT;
+    
     SIGNAL Y0 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
 BEGIN
 
     Decoder_3_to_8_0 : Decoder_3_to_8 PORT MAP(
         I => Reg_En,
-        Y => Y0
+        Y => Y0,
+        EN => Reg_bank_En
+    );
+    
+    Reg0 : Register_4 PORT MAP(
+        D => "0000",
+        En => '1',
+        Clk => Clk,
+        Res => Reset_Register_bank,
+        Q => B1
     );
 
     Reg1 : Register_4 PORT MAP(
@@ -55,7 +67,7 @@ BEGIN
 
     Reg2 : Register_4 PORT MAP(
         D => A,
-        En => Y0(2),
+            En => Y0(2),
         Clk => Clk,
         Res => Reset_Register_bank,
         Q => B2
@@ -63,7 +75,7 @@ BEGIN
 
     Reg3 : Register_4 PORT MAP(
         D => A,
-        En => Y0(3),
+            En => Y0(3),
         Clk => Clk,
         Res => Reset_Register_bank,
         Q => B3
@@ -71,7 +83,7 @@ BEGIN
 
     Reg4 : Register_4 PORT MAP(
         D => A,
-        En => Y0(4),
+            En => Y0(4),
         Clk => Clk,
         Res => Reset_Register_bank,
         Q => B4

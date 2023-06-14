@@ -38,6 +38,7 @@ ENTITY Add_Substract_4 IS
         AddSub_Ctrl : IN STD_LOGIC;
 
         Zero_flag : OUT STD_LOGIC;
+        Overflow_flag : OUT STD_LOGIC;
         Carry_flag : OUT STD_LOGIC;
         Sign_flag : OUT STD_LOGIC
     );
@@ -61,7 +62,7 @@ BEGIN
     PORT MAP(
         A => A,
         B => Intermediate_B,
-        C_in => AddSub_Ctrl, -- AddSub_Ctrl signal to decide addition(0) or subtraction(1)
+        C_in => AddSub_Ctrl,
         S => S,
         C_Out => Carry_flag
     );
@@ -76,6 +77,9 @@ BEGIN
 
     Sign_flag <= S(3);
     Zero_flag <= (NOT S(0)) AND (NOT S(1)) AND (NOT S(2)) AND (NOT S(3));
+
+    Overflow_flag <= (NOT AddSub_Ctrl) AND (A(3) XNOR Intermediate_B(3)) AND (A(3) XOR S(3));
+
     -- Overflow occurs only when addition, both have same sign, and the output has opposite sign
     -- 0 for odd, 1 for even (Set if the least-significant byte of the result contains an even number of 1 bits; cleared otherwise.)
 END Behavioral;

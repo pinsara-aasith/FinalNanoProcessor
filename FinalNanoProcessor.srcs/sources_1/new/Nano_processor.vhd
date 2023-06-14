@@ -7,10 +7,13 @@ ENTITY Nano_processor IS
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
-        Overflow : OUT STD_LOGIC;
+        Sign : OUT STD_LOGIC;
+        Overflow: OUT STD_LOGIC; 
+        Carry: OUT STD_LOGIC; 
         Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
 END Nano_processor;
+
 
 ARCHITECTURE Behavioral OF Nano_processor IS
 
@@ -26,13 +29,13 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             D : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
             Clk : IN STD_LOGIC;
             Res : IN STD_LOGIC; -- SIGNAL TO RESET
-            Load : IN STD_LOGIC; -- SIGNAL TO LOAD 
             Q : OUT STD_LOGIC_VECTOR (2 DOWNTO 0));
     END COMPONENT;
 
     COMPONENT Register_bank
         PORT (
             Reg_En : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+            Reg_bank_En : IN STD_LOGIC;
             A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             Clk : IN STD_LOGIC;
             B0 : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -76,7 +79,8 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             Instruction : IN STD_LOGIC_VECTOR (11 DOWNTO 0);
             Load_sel : OUT STD_LOGIC;
 
-            Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+                        Reg_en : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+            Reg_bank_En : OUT STD_LOGIC;
 
             Reg_select_A : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
             Reg_select_B : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
@@ -86,7 +90,7 @@ ARCHITECTURE Behavioral OF Nano_processor IS
 
             Jump : OUT STD_LOGIC;
             Jump_address : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-            Zero_flag : IN STD_LOGIC
+            Register_check_for_jump : IN STD_LOGIC_VECTOR (3 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -96,10 +100,11 @@ ARCHITECTURE Behavioral OF Nano_processor IS
             B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
             Result : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
             AddSub_Ctrl : IN STD_LOGIC;
-            Zero_flag : OUT STD_LOGIC
+            Zero_flag : OUT STD_LOGIC;
+            Sign_flag : OUT STD_LOGIC;
+            Overflow_flag : OUT STD_LOGIC;
+            Carry_flag : OUT STD_LOGIC
         );
-        -- Carry_flag : OUT STD_LOGIC;
-        -- Sign_flag : OUT STD_LOGIC;
         -- Parity_flag : OUT STD_LOGIC
     END COMPONENT;
 
@@ -121,10 +126,10 @@ ARCHITECTURE Behavioral OF Nano_processor IS
 
     -- INSTRUCTION DECODER
     SIGNAL Reg_en0, Reg_select_A0, Reg_select_B0, Jump_address0 : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL Load_sel0, Add_sub_sel0, Jmp : STD_LOGIC;
+    SIGNAL Load_sel0, Add_sub_sel0, Jmp, Reg_bank_En : STD_LOGIC;
     SIGNAL Imd_val0 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
-    SIGNAL Zero_flag : STD_LOGIC;
+    SIGNAL Zero_flag, Sign_flag, Overflow_flag, Carry_flag : STD_LOGIC;
 
     -- PROGRAM ROM
     SIGNAL PR_OUT : STD_LOGIC_VECTOR (11 DOWNTO 0);
@@ -136,8 +141,6 @@ ARCHITECTURE Behavioral OF Nano_processor IS
     -- ADD/SUB
     SIGNAL Adder_Out, A, B : STD_LOGIC_VECTOR (3 DOWNTO 0);
 
-    -- PROGRAM COUNTER
-    SIGNAL LoadProgRom : STD_LOGIC;
     SIGNAL cout : STD_LOGIC;
 
 BEGIN
@@ -168,8 +171,7 @@ BEGIN
         D => PC_Input,
         Clk => Clk,
         Q => S0,
-        Res => Res,
-        Load => LoadProgRom
+        Res => Res
     );
 
     Program_ROM : ROM
@@ -189,7 +191,8 @@ BEGIN
         Add_sub_sel => Add_sub_sel0,
         Jump_address => Jump_address0,
         Jump => Jmp,
-        Zero_flag => Zero_flag
+        Register_check_for_jump => A,
+        Reg_bank_En => Reg_bank_En
     );
 
     Reg_bank : Register_bank
@@ -203,6 +206,7 @@ BEGIN
         B6 => RB6,
         B7 => RB7,
         Reg_En => Reg_en0,
+        Reg_bank_En => Reg_bank_En,
         A => Reg_bank_input,
         Clk => Clk,
         Reset_Register_bank => Res
@@ -214,7 +218,10 @@ BEGIN
         B => B,
         AddSub_Ctrl => Add_sub_sel0,
         Result => Adder_Out,
-        Zero_flag => Zero_flag
+        Zero_flag => Zero_flag,
+        Overflow_flag => Overflow_flag,
+        Carry_flag => Carry_flag,
+        Sign_flag => Sign_flag
     );
 
     Reg_A_selector : Mux_8_way_4_bit
@@ -246,6 +253,11 @@ BEGIN
     );
 
     Zero <= Zero_flag;
+    
+    Sign <= Sign_flag;
+    Overflow <= Overflow_flag;
+    Carry <= Carry_flag;
+            
 
     S2 <= S0;
     Value <= RB7;

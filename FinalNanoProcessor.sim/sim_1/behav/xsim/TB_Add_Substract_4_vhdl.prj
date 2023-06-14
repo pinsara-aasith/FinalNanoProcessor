@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../FinalNanoProcessor.srcs/sources_1/new/Adders/Add_Substract_4.vhd" \
+"../../../../FinalNanoProcessor.srcs/sources_1/new/Adders/FA.vhd" \
+"../../../../FinalNanoProcessor.srcs/sources_1/new/Adders/HA.vhd" \
+"../../../../FinalNanoProcessor.srcs/sources_1/new/Adders/RCA_4.vhd" \
+"../../../../FinalNanoProcessor.srcs/sim_1/new/TB_Add_Substract_4.vhd" \
+
+# Do not sort compile order
+nosort

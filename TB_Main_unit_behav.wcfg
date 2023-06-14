@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_Main_unit_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_Main_unit" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="27757334fs"></ZoomStartTime>
+      <ZoomEndTime time="138957335fs"></ZoomEndTime>
+      <Cursor1Time time="66724000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="139"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="36" />
+   <wvobject fp_name="/TB_Main_unit/Clk" type="logic">
+      <obj_property name="ElementShortName">Clk</obj_property>
+      <obj_property name="ObjectShortName">Clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/Res" type="logic">
+      <obj_property name="ElementShortName">Res</obj_property>
+      <obj_property name="ObjectShortName">Res</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/Zero" type="logic">
+      <obj_property name="ElementShortName">Zero</obj_property>
+      <obj_property name="ObjectShortName">Zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/Overflow" type="logic">
+      <obj_property name="ElementShortName">Overflow</obj_property>
+      <obj_property name="ObjectShortName">Overflow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/Carry" type="logic">
+      <obj_property name="ElementShortName">Carry</obj_property>
+      <obj_property name="ObjectShortName">Carry</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/Value" type="array">
+      <obj_property name="ElementShortName">Value[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Value[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/S_7Seg" type="array">
+      <obj_property name="ElementShortName">S_7Seg[6:0]</obj_property>
+      <obj_property name="ObjectShortName">S_7Seg[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/Anode" type="array">
+      <obj_property name="ElementShortName">Anode[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Anode[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Instruction" type="array">
+      <obj_property name="ElementShortName">Instruction[11:0]</obj_property>
+      <obj_property name="ObjectShortName">Instruction[11:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Reg_en" type="array">
+      <obj_property name="ElementShortName">Reg_en[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Reg_en[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Load_sel" type="logic">
+      <obj_property name="ElementShortName">Load_sel</obj_property>
+      <obj_property name="ObjectShortName">Load_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Imd_val" type="array">
+      <obj_property name="ElementShortName">Imd_val[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Imd_val[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Reg_select_A" type="array">
+      <obj_property name="ElementShortName">Reg_select_A[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Reg_select_A[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Reg_select_B" type="array">
+      <obj_property name="ElementShortName">Reg_select_B[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Reg_select_B[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Add_sub_sel" type="logic">
+      <obj_property name="ElementShortName">Add_sub_sel</obj_property>
+      <obj_property name="ObjectShortName">Add_sub_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Jump" type="logic">
+      <obj_property name="ElementShortName">Jump</obj_property>
+      <obj_property name="ObjectShortName">Jump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Jump_address" type="array">
+      <obj_property name="ElementShortName">Jump_address[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Jump_address[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Register_check_for_jump" type="array">
+      <obj_property name="ElementShortName">Register_check_for_jump[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Register_check_for_jump[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Ins_ADD" type="logic">
+      <obj_property name="ElementShortName">Ins_ADD</obj_property>
+      <obj_property name="ObjectShortName">Ins_ADD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Ins_NEG" type="logic">
+      <obj_property name="ElementShortName">Ins_NEG</obj_property>
+      <obj_property name="ObjectShortName">Ins_NEG</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Ins_JZR" type="logic">
+      <obj_property name="ElementShortName">Ins_JZR</obj_property>
+      <obj_property name="ObjectShortName">Ins_JZR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/ID/Ins_MOV" type="logic">
+      <obj_property name="ElementShortName">Ins_MOV</obj_property>
+      <obj_property name="ObjectShortName">Ins_MOV</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Reg_En" type="array">
+      <obj_property name="ElementShortName">Reg_En[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Reg_En[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/A" type="array">
+      <obj_property name="ElementShortName">A[3:0]</obj_property>
+      <obj_property name="ObjectShortName">A[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Clk" type="logic">
+      <obj_property name="ElementShortName">Clk</obj_property>
+      <obj_property name="ObjectShortName">Clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Reset_Register_bank" type="logic">
+      <obj_property name="ElementShortName">Reset_Register_bank</obj_property>
+      <obj_property name="ObjectShortName">Reset_Register_bank</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B0" type="array">
+      <obj_property name="ElementShortName">B0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B0[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B1" type="array">
+      <obj_property name="ElementShortName">B1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B1[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B2" type="array">
+      <obj_property name="ElementShortName">B2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B2[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B3" type="array">
+      <obj_property name="ElementShortName">B3[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B3[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B4" type="array">
+      <obj_property name="ElementShortName">B4[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B4[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B5" type="array">
+      <obj_property name="ElementShortName">B5[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B5[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B6" type="array">
+      <obj_property name="ElementShortName">B6[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B6[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/B7" type="array">
+      <obj_property name="ElementShortName">B7[3:0]</obj_property>
+      <obj_property name="ObjectShortName">B7[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Y0" type="array">
+      <obj_property name="ElementShortName">Y0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Y0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Main_unit/UUT/Nano_processor_0/Reg_bank/Enable_Reg_Bank" type="logic">
+      <obj_property name="ElementShortName">Enable_Reg_Bank</obj_property>
+      <obj_property name="ObjectShortName">Enable_Reg_Bank</obj_property>
+   </wvobject>
+</wave_config>

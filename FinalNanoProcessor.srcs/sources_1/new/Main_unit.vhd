@@ -6,7 +6,9 @@ ENTITY Main_unit IS
         Clk : IN STD_LOGIC;
         Res : IN STD_LOGIC;
         Zero : OUT STD_LOGIC;
-        Overflow : OUT STD_LOGIC;
+        Overflow: OUT STD_LOGIC; 
+        Carry: OUT STD_LOGIC; 
+        Sign : OUT STD_LOGIC;
         S_7Seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
         Anode : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
         Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
@@ -20,7 +22,9 @@ ARCHITECTURE Behavioral OF Main_unit IS
             Clk : IN STD_LOGIC;
             Res : IN STD_LOGIC;
             Zero : OUT STD_LOGIC;
+            Sign : OUT STD_LOGIC;
             Overflow : OUT STD_LOGIC;
+            Carry : OUT STD_LOGIC;
             Value : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
         );
     END COMPONENT;
@@ -39,7 +43,7 @@ ARCHITECTURE Behavioral OF Main_unit IS
     END COMPONENT;
 
     SIGNAL SlowClk : STD_LOGIC;
-    SIGNAL Zero_flag, Overflow_flag : STD_LOGIC;
+    SIGNAL Zero_flag, Sign_flag, Overflow_flag, Carry_flag : STD_LOGIC;
     SIGNAL Val : STD_LOGIC_VECTOR (3 DOWNTO 0);
     SIGNAL S_7Seg_out : STD_LOGIC_VECTOR (6 DOWNTO 0);
 
@@ -56,7 +60,9 @@ BEGIN
         Clk => SlowClk,
         Res => Res,
         Zero => Zero_flag,
+        Sign => Sign_flag,
         Overflow => Overflow_flag,
+        Carry => Carry_flag,
         Value => Val
     );
 
@@ -66,8 +72,10 @@ BEGIN
     );
 
     Value <= Val;
+    Sign <= Sign_flag;
     Overflow <= Overflow_flag;
     Zero <= Zero_flag;
+    Carry <= Carry_flag;
 
     S_7Seg <= S_7Seg_out;
     Anode <= "1110";
