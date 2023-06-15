@@ -52,6 +52,7 @@ BEGIN
         --INDEX NO => 11 0011 0101 1011 1010
     BEGIN
         Reg_bank_En <= '1';
+        
         Reg_En <= "001";
         A <= "1010";
         Reset_Reg_Bank <= '0';

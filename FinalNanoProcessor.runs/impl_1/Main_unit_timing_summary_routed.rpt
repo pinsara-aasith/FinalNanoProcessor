@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date         : Wed Jun 14 18:33:10 2023
+| Date         : Thu Jun 15 08:39:34 2023
 | Host         : DESKTOP-0HCKVIU running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file Main_unit_timing_summary_routed.rpt -pb Main_unit_timing_summary_routed.pb -rpx Main_unit_timing_summary_routed.rpx -warn_on_violation
 | Design       : Main_unit
@@ -52,7 +52,77 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 0 register/latch pins with no clock.
+ There are 34 register/latch pins with no clock driven by root clock pin: Clk (HIGH)
+
+ There are 32 register/latch pins with no clock driven by root clock pin: Clock_0/Clk_out_reg/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/ID/Reg_select_A_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/ID/Reg_select_A_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/ID/Reg_select_A_reg[2]/Q (HIGH)
+
+ There are 15 register/latch pins with no clock driven by root clock pin: Nano_processor_0/PC/Q_reg[0]/Q (HIGH)
+
+ There are 15 register/latch pins with no clock driven by root clock pin: Nano_processor_0/PC/Q_reg[1]/Q (HIGH)
+
+ There are 15 register/latch pins with no clock driven by root clock pin: Nano_processor_0/PC/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg1/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg1/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg1/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg1/Q_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg2/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg2/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg2/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg2/Q_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg3/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg3/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg3/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg3/Q_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg4/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg4/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg4/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg4/Q_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg5/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg5/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg5/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg5/Q_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg6/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg6/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg6/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg6/Q_reg[3]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg7/Q_reg[0]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg7/Q_reg[1]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg7/Q_reg[2]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: Nano_processor_0/Reg_bank/Reg7/Q_reg[3]/Q (HIGH)
 
 
 2. checking constant_clock
@@ -67,21 +137,21 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 0 pins that are not constrained for maximum delay.
+ There are 170 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
 5. checking no_input_delay
 --------------------------
- There are 0 input ports with no input delay specified.
+ There is 1 input port with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
 6. checking no_output_delay
 ---------------------------
- There are 0 ports with no output delay specified.
+ There are 15 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 

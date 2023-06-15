@@ -54,7 +54,7 @@ BEGIN
         En => '1',
         Clk => Clk,
         Res => Reset_Reg_Bank,
-        Q => B1
+        Q => B0
     );
 
     Reg1 : Register_4 PORT MAP(

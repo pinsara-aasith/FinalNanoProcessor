@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-| Date         : Wed Jun 14 18:32:52 2023
+| Date         : Thu Jun 15 08:39:15 2023
 | Host         : DESKTOP-0HCKVIU running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Main_unit_control_sets_placed.rpt
 | Design       : Main_unit
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |     0 |
-| Unused register locations in slices containing registers |     0 |
+| Number of unique control sets                            |    16 |
+| Unused register locations in slices containing registers |    71 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,6 +34,13 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
+|      1 |            1 |
+|      2 |            1 |
+|      3 |            6 |
+|      4 |            6 |
+|      5 |            1 |
+|    16+ |            1 |
++--------+--------------+
 
 
 3. Flip-Flop Distribution
@@ -42,11 +49,11 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | No                     |              20 |            9 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |               0 |            0 |
+| No           | Yes                   | No                     |              32 |            9 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | No                    | Yes                    |              29 |           11 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -54,8 +61,25 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------+---------------+------------------+------------------+----------------+
-| Clock Signal | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count |
-+--------------+---------------+------------------+------------------+----------------+
++--------------------------------------------+---------------------------+---------------------------+------------------+----------------+
+|                Clock Signal                |       Enable Signal       |      Set/Reset Signal     | Slice Load Count | Bel Load Count |
++--------------------------------------------+---------------------------+---------------------------+------------------+----------------+
+|  Nano_processor_0/PC/Q_reg[0]_1            |                           | Nano_processor_0/PC/E[0]  |                1 |              1 |
+|  Nano_processor_0/Reg_bank/Reg3/Q_reg[2]_0 |                           |                           |                1 |              2 |
+|  Nano_processor_0/PC/Q_reg[3]_2[0]         |                           |                           |                1 |              3 |
+|  Nano_processor_0/PC/Q_reg[0]_2[0]         |                           |                           |                1 |              3 |
+|  Nano_processor_0/PC/E[0]                  |                           |                           |                2 |              3 |
+|  Nano_processor_0/PC/Q_reg[3]_0[0]         |                           |                           |                1 |              3 |
+|  Clk_IBUF_BUFG                             |                           |                           |                2 |              3 |
+|  SlowClk_BUFG                              |                           |                           |                1 |              3 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[0] | Res_IBUF                  |                2 |              4 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[1] | Res_IBUF                  |                2 |              4 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[2] | Res_IBUF                  |                1 |              4 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[3] | Res_IBUF                  |                2 |              4 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[4] | Res_IBUF                  |                1 |              4 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[5] | Res_IBUF                  |                1 |              4 |
+|  SlowClk_BUFG                              | Nano_processor_0/ID/Y0[6] | Res_IBUF                  |                2 |              5 |
+|  Clk_IBUF_BUFG                             |                           | Clock_0/count[31]_i_1_n_0 |                8 |             31 |
++--------------------------------------------+---------------------------+---------------------------+------------------+----------------+
 
 

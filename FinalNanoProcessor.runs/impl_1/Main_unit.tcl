@@ -74,6 +74,7 @@ set rc [catch {
   set_property ip_output_repo C:/Users/Eutech/Documents/FinalNanoProcessor/FinalNanoProcessor.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   add_files -quiet C:/Users/Eutech/Documents/FinalNanoProcessor/FinalNanoProcessor.runs/synth_1/Main_unit.dcp
+  read_xdc C:/Users/Eutech/Documents/FinalNanoProcessor/FinalNanoProcessor.srcs/constrs_1/new/Basys3Labs.xdc
   link_design -top Main_unit -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

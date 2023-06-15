@@ -14,8 +14,8 @@ END Register_4;
 ARCHITECTURE Behavioral OF Register_4 IS
 BEGIN
     PROCESS (Clk) BEGIN
-        IF (rising_edge(Clk)) THEN -- respond when clock rises
-            IF En = '1' THEN -- Enable should be set
+        IF (rising_edge(Clk)) THEN
+            IF En = '1' THEN
                 Q <= D;
             END IF;
         END IF;
